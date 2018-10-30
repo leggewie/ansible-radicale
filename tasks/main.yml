@@ -1,9 +1,26 @@
 ---
 
-- set_fact: _radicale_config="{{ radicale_default_config | combine(radicale_config | default({}), recursive=True) }}"
-- set_fact: _radicale_logging="{{ radicale_default_logging | combine(radicale_logging | default({}), recursive=True) }}"
+- set_fact: >
+    _radicale_config="{{
+      radicale_default_config |
+      combine(radicale_config |
+      default({}),
+      recursive=True)
+    }}"
 
-- include: dependencies.yml
-- include: prepare.yml
-- include: install.yml
-- include: configure.yml
+- set_fact: >
+    _radicale_logging="{{
+      radicale_default_logging |
+      combine(radicale_logging |
+      default({}),
+      recursive=True)
+    }}"
+
+- name: Include prepare
+  include_tasks: prepare.yml
+
+- name: Include install from pip
+  include_tasks: "install_{{ radicale_install_from }}.yml"
+
+- name: Include configure
+  include_tasks: configure.yml

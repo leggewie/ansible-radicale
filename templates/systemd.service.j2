@@ -1,18 +1,28 @@
 [Unit]
-Description=CalDAV and CardDAV server
-Wants=network-online.target
-After=network-online.target
+Description=A simple CalDAV (calendar) and CardDAV (contact) server
+After=network.target
+Requires=network.target
 
 [Service]
-PrivateTmp=yes
-# Run ExecStartPre with root-permissions
-PermissionsStartOnly=true
 User={{ radicale_user }}
-Group={{ radicale_user }}
-ExecStartPre=-/bin/mkdir -p {{ radicale_pid_dir }}
-ExecStartPre=/bin/chown -R {{ radicale_user }}:{{ radicale_group }} {{ radicale_pid_dir }}
-PIDFile={{ radicale_pid_dir }}/{{ radicale_pid_file }}
-ExecStart={{ radicale_download_dir }}/radicale.py -p "{{ radicale_pid_dir }}/{{ radicale_pid_file }}" -C /etc/radicale/config
+Group={{ radicale_group }}
+PIDFile=/run/radicale.pid
+ExecStart=/usr/local/bin/radicale \
+  -p /run/radicale.pid \
+  -C /etc/radicale/config
+
+Restart=on-failure
+# Deny other users access to the calendar data
+UMask=0027
+# Optional security settings
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+NoNewPrivileges=true
 
 [Install]
 WantedBy=default.target

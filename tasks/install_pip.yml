@@ -1,0 +1,19 @@
+---
+
+- name: dependencies are installed
+  apt:
+    name: "{{ item }}"
+    state: present
+    cache_valid_time: 3600
+  with_items:
+    - python3-pip
+    - python3-setuptools
+    - python3-bcrypt
+    - python3-passlib
+
+- name: radicale is installed
+  pip:
+    name: radicale
+    version: "{{ radicale_version }}"
+    executable: pip3
+  notify: restart radicale

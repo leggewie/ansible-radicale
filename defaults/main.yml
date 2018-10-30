@@ -1,32 +1,23 @@
 ---
 
-radicale_version: 1.1.1
+radicale_version: 2.1.10
+radicale_install_from: pip
+
 radicale_git_url: https://github.com/Kozea/Radicale.git
+radicale_download_dir: "/opt/radicale"
 
 radicale_user: radicale
-radicale_user_home: "/home/{{ radicale_user }}"
 radicale_group: "{{ radicale_user }}"
 
-radicale_download_dir: "{{ radicale_user_home }}/radicale"
-radicale_collections_dir: "{{ radicale_user_home }}/collections"
-radicale_pid_dir: "/var/run/radicale"
-
-radicale_log_file: "/var/log/radicale"
-
-# the service name can be altered to support multiple running instances
-radicale_service_name: "radicale"
-radicale_pid_file: "{{ radicale_service_name }}.pid"
+radicale_collections_dir: "/data/radicale/collections"
+radicale_log_dir: "/var/log/radicale"
 
 radicale_default_config:
   server:
     hosts: "0.0.0.0:5232"
-    daemon: true
   logging:
     config: /etc/radicale/logging
-  git:
-    committer: "Radicale @ {{ ansible_fqdn }}"
   storage:
-    type: filesystem
     filesystem_folder: "{{ radicale_collections_dir }}"
 
 radicale_default_logging:
@@ -40,8 +31,8 @@ radicale_default_logging:
     level: INFO
     handlers: file
   handler_file:
-    class: "FileHandler"
-    args: "('/var/log/radicale',)"
+    class: "handlers.RotatingFileHandler"
+    args: "('/var/log/radicale/log', 'a', 100000, 10)"
     formatter: full
   formatter_full:
     format: '%(asctime)s - %(levelname)s: %(message)s'

@@ -8,8 +8,10 @@
 - name: radicale user exists
   user:
     name: "{{ radicale_user }}"
-    home: "{{ radicale_user_home }}"
     group: "{{ radicale_group }}"
+    create_home: false
+    system: true
+    shell: /sbin/nologin
     state: present
 
 - name: /etc/radicale folder exists
@@ -28,10 +30,10 @@
     group: "{{ radicale_group }}"
     mode: 0770
 
-- name: log file is writable
+- name: log folder exists and is writable
   file:
-    path: "{{ radicale_log_file }}"
-    state: touch
+    path: "{{ radicale_log_dir }}"
+    state: directory
     owner: root
     group: "{{ radicale_group }}"
-    mode: 0660
+    mode: 0770
