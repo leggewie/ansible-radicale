@@ -2,19 +2,14 @@
 dependencies: []
 
 galaxy_info:
-  author: Stefan Grönke
+  author: Maxime Lareo
   description: Provisions Radicale - a simple calendar and contact server
-  company: gronke.org
   license: MIT
-  min_ansible_version: 1.9
+  min_ansible_version: 2.6
   platforms:
     - name: Debian
       versions:
-        - jessie
-        - wheezy
-    - name: Ubuntu
-      versions:
-        - trusty
+        - stretch
   galaxy_tags:
     - radicale
     - caldav
@@ -22,4 +17,3 @@ galaxy_info:
     - calendar
     - contacts
     - groupware
-
