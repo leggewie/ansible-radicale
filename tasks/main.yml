@@ -1,6 +1,7 @@
 ---
 
-- set_fact: >
+- name: Combine configuration dict
+  set_fact: >
     _radicale_config="{{
       radicale_default_config |
       combine(radicale_config |
@@ -8,7 +9,8 @@
       recursive=True)
     }}"
 
-- set_fact: >
+- name: Combine logging dict
+  set_fact: >
     _radicale_logging="{{
       radicale_default_logging |
       combine(radicale_logging |

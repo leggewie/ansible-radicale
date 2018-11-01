@@ -1,5 +1,7 @@
 # ansible-radicale
 
+[![Build Status](https://travis-ci.com/maxlareo/ansible-radicale.svg?branch=master)](https://travis-ci.com/maxlareo/ansible-radicale)
+
 Provisions [Radicale](http://radicale.org/) - a simple calendar and contact server
 
 ## Role Variables

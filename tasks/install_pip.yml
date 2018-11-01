@@ -5,7 +5,7 @@
     name: "{{ item }}"
     state: present
     cache_valid_time: 3600
-  with_items:
+  loop:
     - python3-pip
     - python3-setuptools
     - python3-bcrypt
