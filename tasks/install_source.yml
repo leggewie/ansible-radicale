@@ -6,15 +6,11 @@
     state: present
     cache_valid_time: 3600
   with_items:
+    - python3-setuptools
+    - python3-bcrypt
+    - python3-passlib
     - python3-vobject
     - python3-dateutil
-    - python-bcrypt
-    - python-passlib
-    - python-ldap
-    - python-setuptools
-    - python-dev
-    - libffi-dev
-    - rsyslog
     - git-core
 
 - name: radicale is downloaded
@@ -26,11 +22,8 @@
     depth: 1
   notify: restart radicale
 
-- name: radicale in PATH
-  file:
-    state: link
-    path: /usr/local/bin/radicale
-    src: "{{ radicale_download_dir }}/radicale.py"
-    owner: root
-    group: root
-    mode: 755
+- name: radicale is installed
+  command: python3 setup.py install
+  args:
+    chdir: "{{ radicale_download_dir }}/"
+    creates: /usr/local/bin/radicale

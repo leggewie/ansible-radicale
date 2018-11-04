@@ -2,18 +2,21 @@
 dependencies: []
 
 galaxy_info:
+  role_name: radicale
   author: Maxime Lareo
   description: Provisions Radicale - a simple calendar and contact server
   license: MIT
-  min_ansible_version: 2.6
+  min_ansible_version: 2.5
   platforms:
     - name: Debian
       versions:
         - stretch
+    - name: Ubuntu
+      versions:
+        - bionic
   galaxy_tags:
     - radicale
     - caldav
     - carddav
     - calendar
     - contacts
-    - groupware

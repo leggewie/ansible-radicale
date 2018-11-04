@@ -21,7 +21,7 @@
 - name: Include prepare
   include_tasks: prepare.yml
 
-- name: Include install from pip
+- name: "Include install from {{ radicale_install_from }}"
   include_tasks: "install_{{ radicale_install_from }}.yml"
 
 - name: Include configure
