@@ -1,0 +1,22 @@
+---
+
+- name: dependencies are installed
+  apt:
+    name:
+      - python3-setuptools
+      - python3-bcrypt
+      - python3-passlib
+    state: present
+    cache_valid_time: 3600
+
+- name: set radicale executable
+  set_fact:
+    radicale_executable: "/usr/bin/radicale"
+
+- name: radicale is installed
+  apt:
+    name:
+      - radicale
+    state: present
+    cache_valid_time: 3600
+  notify: restart radicale
