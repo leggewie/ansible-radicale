@@ -11,6 +11,10 @@
     - python3-bcrypt
     - python3-passlib
 
+- name: set radicale executable
+  set_fact:
+    radicale_executable: "/usr/local/bin/radicale"
+
 - name: radicale is installed
   pip:
     name: radicale

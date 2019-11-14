@@ -13,6 +13,10 @@
     - python3-dateutil
     - git-core
 
+- name: set radicale executable
+  set_fact:
+    radicale_executable: "/usr/local/bin/radicale"
+
 - name: radicale is downloaded
   git:
     repo: "{{ radicale_git_url }}"
@@ -26,4 +30,4 @@
   command: python3 setup.py install
   args:
     chdir: "{{ radicale_download_dir }}/"
-    creates: /usr/local/bin/radicale
+    creates: "{{ radicale_executable }}"

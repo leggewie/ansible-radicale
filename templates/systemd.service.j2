@@ -7,7 +7,7 @@ Requires=network.target
 User={{ radicale_user }}
 Group={{ radicale_group }}
 PIDFile=/run/radicale.pid
-ExecStart=/usr/local/bin/radicale \
+ExecStart={{ radicale_executable }} \
   -p /run/radicale.pid \
   -C /etc/radicale/config
 
