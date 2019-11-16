@@ -2,8 +2,8 @@
 
 - name: radicale is configured
   template:
-    src: "{{item}}.j2"
-    dest: "/etc/radicale/{{item}}"
+    src: "{{ item }}.j2"
+    dest: "/etc/radicale/{{ item }}"
     owner: root
     group: "{{ radicale_group }}"
     mode: 0750
