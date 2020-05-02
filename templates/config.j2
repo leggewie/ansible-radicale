@@ -1,6 +1,6 @@
 {% for radicale_config_main_name, radicale_config_main in _radicale_config.items() %}
 {% if((radicale_config_main == true) or (radicale_config_main == false) or (radicale_config_main is number) or (radicale_config_main is string)) %}
-{{ radicale_config_main_name | lower }}: {{ radicale_config_main }}
+{{ radicale_config_main_name | lower }} = {{ radicale_config_main }}
 {% endif %}
 {% endfor %}
 {% for radicale_config_main_name, radicale_config_main in _radicale_config.items() %}
@@ -8,7 +8,7 @@
 
 [{{ radicale_config_main_name | lower }}]
 {% for radicale_config_sub_name, radicale_config_sub in radicale_config_main.items() %}
-{{ radicale_config_sub_name | lower }}: {{ radicale_config_sub }}
+{{ radicale_config_sub_name | lower }} = {{ radicale_config_sub }}
 {% endfor %}
 {% endif %}
 {% endfor %}
