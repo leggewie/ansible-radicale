@@ -6,7 +6,7 @@
     dest: "/etc/radicale/{{ item }}"
     owner: root
     group: "{{ radicale_group }}"
-    mode: 0750
+    mode: '0640'
   with_items:
     - logging
     - config

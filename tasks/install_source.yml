@@ -1,17 +1,19 @@
 ---
 
-- name: dependencies are installed
+- name: dependencies are installed (yum)
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ packages_source }}"
+  when: ansible_os_family == 'RedHat'
+
+- name: dependencies are installed (apt)
   apt:
     name: "{{ item }}"
     state: present
     cache_valid_time: 3600
-  with_items:
-    - python3-setuptools
-    - python3-bcrypt
-    - python3-passlib
-    - python3-vobject
-    - python3-dateutil
-    - git-core
+  with_items: "{{ packages_source }}"
+  when: ansible_os_family == 'Debian'
 
 - name: set radicale executable
   set_fact:

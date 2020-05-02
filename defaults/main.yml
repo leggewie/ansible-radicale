@@ -19,6 +19,8 @@ radicale_default_config:
     config: /etc/radicale/logging
   storage:
     filesystem_folder: "{{ radicale_collections_dir }}"
+  web:
+    type: internal
 
 radicale_default_logging:
   loggers:
@@ -36,3 +38,33 @@ radicale_default_logging:
     formatter: full
   formatter_full:
     format: '%(asctime)s - %(levelname)s: %(message)s'
+
+
+yum_packages_source:
+  - python3-setuptools
+  - python3-bcrypt
+  - python3-passlib
+  - python3-vobject
+  - python3-dateutil
+  - git-core
+
+yum_packages_pip:
+  - python3-pip
+
+pip_packages:
+  - passlib
+  - bcrypt
+
+apt_packages_source:
+  - python3-setuptools
+  - python3-bcrypt
+  - python3-passlib
+  - python3-vobject
+  - python3-dateutil
+  - git-core
+
+apt_packages_pip:
+  - python3-pip
+  - python3-setuptools
+  - python3-bcrypt
+  - python3-passlib

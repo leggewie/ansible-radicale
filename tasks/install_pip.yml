@@ -1,15 +1,19 @@
 ---
 
-- name: dependencies are installed
+- name: dependencies are installed (yum)
+  yum:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ yum_packages_pip }}"
+  when: ansible_os_family == 'RedHat'
+
+- name: dependencies are installed (apt)
   apt:
     name: "{{ item }}"
     state: present
     cache_valid_time: 3600
-  loop:
-    - python3-pip
-    - python3-setuptools
-    - python3-bcrypt
-    - python3-passlib
+  loop: "{{ apt_packages_pip }}"
+  when: ansible_os_family == 'Debian'
 
 - name: set radicale executable
   set_fact:
@@ -20,4 +24,5 @@
     name: radicale
     version: "{{ radicale_version }}"
     executable: pip3
+    extra_args: --upgrade
   notify: restart radicale
