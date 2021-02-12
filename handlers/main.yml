@@ -1,10 +1,12 @@
 ---
 
 - name: reload systemd
+  become: true
   systemd:
     daemon_reload: true
 
 - name: restart radicale
+  become: true
   systemd:
     name: radicale
     state: restarted
