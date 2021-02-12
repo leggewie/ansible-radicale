@@ -1,6 +1,6 @@
 # ansible-radicale
 
-[![Build Status](https://travis-ci.com/maxlareo/ansible-radicale.svg?branch=master)](https://travis-ci.com/maxlareo/ansible-radicale) [![Ansible Galaxy](https://img.shields.io/badge/ansible--galaxy-radicale-blue.svg)](https://galaxy.ansible.com/maxlareo/radicale/)
+[![Ansible Galaxy](https://img.shields.io/badge/ansible--galaxy-radicale-blue.svg)](https://galaxy.ansible.com/leggewie/radicale/)
 
 Provisions [Radicale](http://radicale.org/) - a simple calendar and contact server
 

@@ -3,7 +3,7 @@ dependencies: []
 
 galaxy_info:
   role_name: radicale
-  author: Maxime Lareo
+  author: Rolf Leggewie
   description: Provisions Radicale - a simple calendar and contact server
   license: MIT
   min_ansible_version: 2.5
