@@ -101,3 +101,7 @@ None
       server:
         hosts: 127.0.0.1:5232
 ```
+
+### Contributions
+
+A number of people have [contributed](https://github.com/leggewie/ansible-radicale/graphs/contributors) to the specs of this ansible role.
