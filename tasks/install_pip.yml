@@ -2,17 +2,21 @@
 
 - name: dependencies are installed (yum)
   yum:
-    name: "{{ item }}"
+    name: "{{ yum_pkg }}"
     state: present
   loop: "{{ yum_packages_pip }}"
+  loop_control:
+    loop_var: yum_pkg
   when: ansible_os_family == 'RedHat'
 
 - name: dependencies are installed (apt)
   apt:
-    name: "{{ item }}"
+    name: "{{ apt_pkg }}"
     state: present
     cache_valid_time: 3600
   loop: "{{ apt_packages_pip }}"
+  loop_control:
+    loop_var: apt_pkg
   when: ansible_os_family == 'Debian'
 
 - name: set radicale executable

@@ -2,14 +2,16 @@
 
 - name: radicale is configured
   template:
-    src: "{{ item }}.j2"
-    dest: "/etc/radicale/{{ item }}"
+    src: "{{ file }}.j2"
+    dest: "/etc/radicale/{{ file }}"
     owner: root
     group: "{{ radicale_group }}"
     mode: '0640'
   with_items:
     - logging
     - config
+  loop_control:
+    loop_var: file
   notify: restart radicale
 
 - name: systemd service is available
