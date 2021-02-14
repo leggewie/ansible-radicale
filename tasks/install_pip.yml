@@ -1,6 +1,7 @@
 ---
 
 - name: dependencies are installed (yum)
+  become: True
   yum:
     name: "{{ yum_pkg }}"
     state: present
@@ -10,6 +11,7 @@
   when: ansible_os_family == 'RedHat'
 
 - name: dependencies are installed (apt)
+  become: True
   apt:
     name: "{{ apt_pkg }}"
     state: present

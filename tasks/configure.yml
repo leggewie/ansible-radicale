@@ -1,6 +1,7 @@
 ---
 
 - name: radicale is configured
+  become: True
   template:
     src: "{{ file }}.j2"
     dest: "/etc/radicale/{{ file }}"

@@ -20,11 +20,12 @@
 
 - name: Include prepare
   import_tasks: prepare.yml
-  become: true
+  become: True
 
 - name: "Include install from {{ radicale_install_from }}"
   include_tasks: "install_{{ radicale_install_from }}.yml"
+  become: True
 
 - name: Include configure
   import_tasks: configure.yml
-  become: true
+  become: True
